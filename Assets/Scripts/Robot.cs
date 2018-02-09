@@ -131,4 +131,12 @@ public class Robot : MonoBehaviour {
         if (happiness > 100)
             happiness = 100;
     }
+
+    public void saveRobot()
+    {
+        if (!_serverTime)
+            updateDevice();
+        PlayerPrefs.SetInt("_hunger", _hunger);
+        PlayerPrefs.SetInt("_happiness", _happiness);
+    }
 }

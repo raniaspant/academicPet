@@ -23,7 +23,7 @@ public class Robot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Animator>().SetBool("Jump", gameObject.transform.position.y > -2.22f);
+        GetComponent<Animator>().SetBool("Jump", gameObject.transform.position.y > 1.0f);
         if (Input.GetMouseButtonUp(0))
         {
             Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);

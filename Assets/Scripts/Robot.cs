@@ -131,6 +131,16 @@ public class Robot : MonoBehaviour {
             happiness = 100;
     }
 
+    public void updateHunger(int i)
+    {
+        if(i == 0)
+            hunger += 2;
+        else if(i == 1)
+            hunger += 4;
+        if (hunger > 100)
+            hunger = 100;
+    }
+
     public void saveRobot()
     {
         if (!_serverTime)

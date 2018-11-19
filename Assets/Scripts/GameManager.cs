@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour {
     public void selectFood(int i)
     {
         toggle(foodPanel);
+        robot.GetComponent<Robot>().updateHunger(i); 
     }
 
     public void toggle(GameObject g)

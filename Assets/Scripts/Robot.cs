@@ -76,7 +76,6 @@ public class Robot : MonoBehaviour {
         _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
         if (_happiness < 0)
             _happiness = 0;
-        Debug.Log(_happiness);
         if (_serverTime)
             updateServer();
         else

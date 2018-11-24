@@ -10,6 +10,8 @@ public class Robot : MonoBehaviour {
     [SerializeField]
     private int _happiness;
     [SerializeField]
+    private int _money;
+    [SerializeField]
     private string _name;
     private bool _serverTime;
     private int _clickCount;
@@ -60,6 +62,16 @@ public class Robot : MonoBehaviour {
         {
             _happiness = 100;
             PlayerPrefs.SetInt("_happiness", _happiness);
+        }
+        else
+        {
+            _happiness = PlayerPrefs.GetInt("_happiness");
+            // TODO update the hunger and stuff
+        }
+        if (!PlayerPrefs.HasKey("_money"))
+        {
+            _happiness = 10;
+            PlayerPrefs.SetInt("_money", _happiness);
         }
         else
         {
@@ -118,6 +130,13 @@ public class Robot : MonoBehaviour {
         set { _happiness = value; }
     }
 
+
+    public int money
+    {
+        get { return _money; }
+        set { _money = value; }
+    }
+
     public string name
     {
         get { return _name; }
@@ -147,5 +166,6 @@ public class Robot : MonoBehaviour {
             updateDevice();
         PlayerPrefs.SetInt("_hunger", _hunger);
         PlayerPrefs.SetInt("_happiness", _happiness);
+        PlayerPrefs.SetInt("_money", _money);
     }
 }

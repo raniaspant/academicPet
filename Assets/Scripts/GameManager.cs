@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour {
     public GameObject foodPanel;
     public Sprite[] foodIcons;
 
+    public GameObject taskPanel;
+    public Sprite[] taskIcons;
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("looks")) 
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour {
                 foodPanel.SetActive(!foodPanel.activeInHierarchy);
                 break;
             case (3):
+                taskPanel.SetActive(!taskPanel.activeInHierarchy);
                 break;
             case (4):
                 robot.GetComponent<Robot>().saveRobot();
@@ -115,5 +119,10 @@ public class GameManager : MonoBehaviour {
     {
         if (g.activeInHierarchy)
             g.SetActive(false);
+    }
+
+    public void selectTask(int i)
+    {
+        toggle(taskPanel);
     }
 }

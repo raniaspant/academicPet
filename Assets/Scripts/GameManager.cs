@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject happinessText;
     public GameObject hungerText;
+    public GameObject moneyText;
 
     public GameObject namePanel;
     public GameObject nameInput;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour {
     void Update () {
         happinessText.GetComponent<Text>().text = robot.GetComponent<Robot>().happiness.ToString();
         hungerText.GetComponent<Text>().text = robot.GetComponent<Robot>().hunger.ToString();
+        moneyText.GetComponent<Text>().text = robot.GetComponent<Robot>().money.ToString();
         nameText.GetComponent<Text>().text = robot.GetComponent<Robot>().name;
 
     }
@@ -124,5 +126,7 @@ public class GameManager : MonoBehaviour {
     public void selectTask(int i)
     {
         toggle(taskPanel);
+        robot.GetComponent<Robot>().updateMoney(i + 2);
+        robot.GetComponent<Robot>().updateHunger(- i - 1);
     }
 }

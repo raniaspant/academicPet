@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
 public class Robot : MonoBehaviour {
 
@@ -28,19 +29,25 @@ public class Robot : MonoBehaviour {
         GetComponent<Animator>().SetBool("Jump", gameObject.transform.position.y > 1.0f);
         if (Input.GetMouseButtonUp(0))
         {
-            Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
-            if (hit)
+            // Check if the mouse was clicked over the robot
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                //Debug.Log(hit.transform.gameObject.name);
-                if(hit.transform.gameObject.tag == "Robot")
+                // Debug.Log("Clicked on the robot");
+            
+                Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
+                if (hit)
                 {
-                    _clickCount++;
-                    if(_clickCount >= 3)
+                    //Debug.Log(hit.transform.gameObject.name);
+                    if(hit.transform.gameObject.tag == "Robot")
                     {
-                        _clickCount = 0;
-                        updateHappiness(1);
-                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000000));
+                        _clickCount++;
+                        if(_clickCount >= 3)
+                        {
+                            _clickCount = 0;
+                            updateHappiness(1);
+                            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000000));
+                        }
                     }
                 }
             }
@@ -70,12 +77,12 @@ public class Robot : MonoBehaviour {
         }
         if (!PlayerPrefs.HasKey("_money"))
         {
-            _happiness = 10;
-            PlayerPrefs.SetInt("_money", _happiness);
+            _money = 100;
+            PlayerPrefs.SetInt("_money", _money);
         }
         else
         {
-            _happiness = PlayerPrefs.GetInt("_happiness");
+            _money = PlayerPrefs.GetInt("_money");
             // TODO update the hunger and stuff
         }
         if (!PlayerPrefs.HasKey("then"))
@@ -158,6 +165,13 @@ public class Robot : MonoBehaviour {
             hunger += 4;
         if (hunger > 100)
             hunger = 100;
+    }
+
+    public void updateMoney(int i)
+    {
+        money += i;
+        if (money > 100)
+            money = 100;
     }
 
     public void saveRobot()

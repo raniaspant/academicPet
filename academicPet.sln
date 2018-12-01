@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academicPet", "academicPet.csproj", "{1958C199-D132-7742-4787-E11BB828D20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academicPet", "academicPet.csproj", "{1958C199-D132-7742-4787-E11BB828D20D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academicPet.Editor", "academicPet.Editor.csproj", "{B3D81722-82AB-B062-1A87-548B043F2EEE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academicPet.Editor", "academicPet.Editor.csproj", "{B3D81722-82AB-B062-1A87-548B043F2EEE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "academicPet.Editor", "academicPet.Editor.csproj", "{B3D81722-82AB-B062-1A87-548B043F2EEE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,22 +13,6 @@ Global
 		{1958C199-D132-7742-4787-E11BB828D20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1958C199-D132-7742-4787-E11BB828D20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1958C199-D132-7742-4787-E11BB828D20D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1958C199-D132-7742-4787-E11BB828D20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1958C199-D132-7742-4787-E11BB828D20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1958C199-D132-7742-4787-E11BB828D20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1958C199-D132-7742-4787-E11BB828D20D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3D81722-82AB-B062-1A87-548B043F2EEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,8 +16,12 @@ public class Robot : MonoBehaviour {
     private string _name;
     private bool _serverTime;
     private int _clickCount;
+    public bool fundsAvailable;
+    public GameObject GameManager;
 	// Use this for initialization
 	void Start () {
+        GameManager = GameObject.FindGameObjectWithTag("GameManager");
+        fundsAvailable = true;
         updateStatus();
         if (!PlayerPrefs.HasKey("name"))
             PlayerPrefs.SetString("name", "Robot");
@@ -159,10 +163,33 @@ public class Robot : MonoBehaviour {
 
     public void updateHunger(int i)
     {
-        if(i == 0)
-            hunger += 2;
-        else if(i == 1)
-            hunger += 4;
+        if (i == 0) // Ramen noodles
+        {
+            if (money > 2)
+            {
+                hunger += 2;
+                money -= 1;
+                fundsAvailable = true;
+            }
+            else
+            {
+                GameManager.GetComponent<GameManager>().NoFunds();
+            }
+        }
+        else if (i == 1) // Hot pockets
+        {
+            if(money > 2)
+            {
+                hunger += 5;
+                money -= 2;
+                fundsAvailable = true;
+            }
+            else
+            {
+                GameManager.GetComponent<GameManager>().NoFunds();
+            }
+            
+        }
         if (hunger > 100)
             hunger = 100;
     }

@@ -30,8 +30,16 @@ public class GameManager : MonoBehaviour {
     public GameObject taskPanel;
     public Sprite[] taskIcons;
 
+    public GameObject taskInProgressPanel;
+    public GameObject noFundsAvailable;
+
+    private float taskTimer;
+    private int taskSelected;
+
     void Start()
     {
+        taskSelected = -1;
+        taskTimer = 0f;
         if (!PlayerPrefs.HasKey("looks")) 
             PlayerPrefs.SetInt("looks", 0);
         createRobot(PlayerPrefs.GetInt("looks"));
@@ -45,6 +53,24 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update () {
+        if(taskSelected == 0)   // Experiment in progress
+        {
+            taskTimer -= Time.deltaTime;
+            if (taskTimer < 0) // Done experimenting
+            {
+                robot.GetComponent<Robot>().updateMoney(2);
+                taskSelected = -1;
+            }
+        }
+        else if (taskSelected == 1)   // Experiment in progress
+        {
+            taskTimer -= Time.deltaTime;
+            if (taskTimer < 0) // Done experimenting
+            {
+                robot.GetComponent<Robot>().updateMoney(5);
+                taskSelected = -1;
+            }
+        }
         happinessText.GetComponent<Text>().text = robot.GetComponent<Robot>().happiness.ToString();
         hungerText.GetComponent<Text>().text = robot.GetComponent<Robot>().hunger.ToString();
         moneyText.GetComponent<Text>().text = robot.GetComponent<Robot>().money.ToString();
@@ -74,10 +100,20 @@ public class GameManager : MonoBehaviour {
                 homePanel.SetActive(!homePanel.activeInHierarchy);
                 break;
             case (2):
-                foodPanel.SetActive(!foodPanel.activeInHierarchy);
+                if(taskSelected == -1)
+                    foodPanel.SetActive(!foodPanel.activeInHierarchy);
+                else
+                    StartCoroutine(TasksTimer());
                 break;
             case (3):
-                taskPanel.SetActive(!taskPanel.activeInHierarchy);
+                if (taskSelected == -1)
+                {
+                    taskPanel.SetActive(!taskPanel.activeInHierarchy);
+                }
+                else
+                {
+                    StartCoroutine(TasksTimer());
+                }
                 break;
             case (4):
                 robot.GetComponent<Robot>().saveRobot();
@@ -126,7 +162,30 @@ public class GameManager : MonoBehaviour {
     public void selectTask(int i)
     {
         toggle(taskPanel);
-        robot.GetComponent<Robot>().updateMoney(i + 2);
-        robot.GetComponent<Robot>().updateHunger(- i - 1);
+        taskSelected = i;
+        if (i == 0)
+            taskTimer = 4f;
+        else if (i == 1)
+            taskTimer = 7f;
     }
+
+    IEnumerator TasksTimer()
+    {
+        taskInProgressPanel.SetActive(!taskInProgressPanel.activeInHierarchy);
+        yield return new WaitForSeconds(1);
+        taskInProgressPanel.SetActive(!taskInProgressPanel.activeInHierarchy);
+    }
+
+    public void NoFunds()
+    {
+        StartCoroutine(NoFundsRoutine());
+    }
+
+    IEnumerator NoFundsRoutine()
+    {
+        noFundsAvailable.SetActive(!noFundsAvailable.activeInHierarchy);
+        yield return new WaitForSeconds(1);
+        noFundsAvailable.SetActive(!noFundsAvailable.activeInHierarchy);
+    }
+
 }
